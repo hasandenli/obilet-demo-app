@@ -1,0 +1,35 @@
+@model ObiletDemo.Web.Models.SystemInfoResponse
+
+@{
+    ViewData["Title"] = "System Information";
+}
+
+<div class="container mt-5">
+    <h1>@Model.ProjectName</h1>
+    <p class="lead">@Model.Description</p>
+    
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>Technical Details</h2>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Architecture</dt>
+                <dd class="col-sm-9">@Model.Architecture</dd>
+
+                <dt class="col-sm-3">Framework</dt>
+                <dd class="col-sm-9">@Model.Framework</dd>
+
+                <dt class="col-sm-3">Technologies</dt>
+                <dd class="col-sm-9">
+                    <ul>
+                        @foreach (var tech in Model.Technologies)
+                        {
+                            <li>@tech</li>
+                        }
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
