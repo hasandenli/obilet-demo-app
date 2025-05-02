@@ -5,31 +5,42 @@
 }
 
 <div class="container mt-5">
-    <h1>@Model.ProjectName</h1>
-    <p class="lead">@Model.Description</p>
-    
-    <div class="card mt-4">
-        <div class="card-header">
-            <h2>Technical Details</h2>
-        </div>
-        <div class="card-body">
-            <dl class="row">
-                <dt class="col-sm-3">Architecture</dt>
-                <dd class="col-sm-9">@Model.Architecture</dd>
-
-                <dt class="col-sm-3">Framework</dt>
-                <dd class="col-sm-9">@Model.Framework</dd>
-
-                <dt class="col-sm-3">Technologies</dt>
-                <dd class="col-sm-9">
-                    <ul>
-                        @foreach (var tech in Model.Technologies)
-                        {
-                            <li>@tech</li>
-                        }
-                    </ul>
-                </dd>
-            </dl>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">System Information</h2>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-4 font-weight-bold">Project Name:</div>
+                        <div class="col-md-8">@Model.ProjectName</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 font-weight-bold">Description:</div>
+                        <div class="col-md-8">@Model.Description</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 font-weight-bold">Architecture:</div>
+                        <div class="col-md-8">@Model.Architecture</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 font-weight-bold">Framework:</div>
+                        <div class="col-md-8">@Model.Framework</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4 font-weight-bold">Technologies:</div>
+                        <div class="col-md-8">
+                            <ul class="list-unstyled">
+                                @foreach (var tech in Model.Technologies)
+                                {
+                                    <li>@tech</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -14,10 +14,10 @@ namespace ObiletDemo.API.Services
             return new SystemInfoResponse
             {
                 ProjectName = "Obilet Demo API",
-                Description = "Obilet Demo Uygulaması için geliştirilen API projesi",
-                Architecture = "Clean Architecture",
+                Description = "A demo API project for Obilet",
+                Architecture = "Microservices",
                 Framework = ".NET 8.0",
-                Technologies = new[] { "C#", "ASP.NET Core", "Entity Framework Core", "Swagger" }
+                Technologies = new List<string> { "ASP.NET Core", "Docker", "Swagger" }
             };
         }
     }

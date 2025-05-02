@@ -8,8 +8,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Register SystemService
+// Add SystemService
 builder.Services.AddScoped<ISystemService, SystemService>();
+
+// Configure Kestrel to listen on port 80
+builder.WebHost.UseKestrel(options =>
+{
+    options.ListenAnyIP(80);
+});
 
 var app = builder.Build();
 
@@ -17,7 +23,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Obilet Demo API V1");
+        c.RoutePrefix = string.Empty; // Swagger'ı kök URL'de göster
+    });
 }
 
 app.UseHttpsRedirection();

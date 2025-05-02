@@ -1,9 +1,18 @@
-var builder = WebApplication.CreateBuilder(args);
+using ObiletDemo.Web.Services;
 
-builder.Services.AddScoped<ISystemService, SystemService>();
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<ISystemService, SystemService>();
+
+// Configure Kestrel to listen on port 80
+builder.WebHost.UseKestrel(options =>
+{
+    options.ListenAnyIP(80);
+});
 
 var app = builder.Build();
 
@@ -24,6 +33,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=System}/{action=Info}/{id?}");
 
 app.Run();

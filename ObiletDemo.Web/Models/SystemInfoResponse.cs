@@ -2,10 +2,11 @@ namespace ObiletDemo.Web.Models
 {
     public class SystemInfoResponse
     {
-        public string ProjectName { get; set; }
-        public string Description { get; set; }
-        public string Architecture { get; set; }
-        public string Framework { get; set; }
-        public string[] Technologies { get; set; }
+        public required string ProjectName { get; set; }
+        public required string Description { get; set; }
+        public require
+        hitecture { get; set; }
+        public required string Framework { get; set; }
+        public required List<string> Technologies { get; set; }
     }
 }
