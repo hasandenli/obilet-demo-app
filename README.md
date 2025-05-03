@@ -7,13 +7,13 @@ This is a demo application that consists of a Web API and a Web application, con
 The solution contains two main projects:
 
 1. **ObiletDemo.API** - A .NET 8 Web API project
-   - Port: 80
+   - Port: 5007
    - Swagger UI available at root URL
    - Contains system information endpoints
 
 2. **ObiletDemo.Web** - A .NET 8 Web Application
-   - Port: 80
-   - Default landing page: System/Info
+   - Port: 5006
+   - Default landing page: Journey/Index
    - MVC architecture
 
 ## Prerequisites
@@ -38,8 +38,8 @@ The solution contains two main projects:
    ```
 
 3. Access the applications:
-   - Web API: http://localhost:80
-   - Web Application: http://localhost:80
+   - Web API: http://localhost:5007
+   - Web Application: http://localhost:5006
 
 ### Local Development
 
@@ -69,6 +69,7 @@ The solution contains two main projects:
 
 ## Web Application Routes
 
+- `/Journey/Index` - Journey search page
 - `/System/Info` - System information page
 - `/System/Health` - System health check page
 - `/System/Version` - System version page
@@ -80,17 +81,18 @@ The application uses the following Docker configuration:
 - **API Container**:
   - Base image: mcr.microsoft.com/dotnet/aspnet:8.0
   - Build context: ObiletDemo.API
-  - Port: 80
+  - Port: 5007
 
 - **Web Container**:
   - Base image: mcr.microsoft.com/dotnet/aspnet:8.0
   - Build context: ObiletDemo.Web
-  - Port: 80
+  - Port: 5006
 
 ## Development Notes
 
 - The application uses .NET 8
-- Both projects are configured to use port 80
+- API project is configured to use port 5007
+- Web project is configured to use port 5006
 - Swagger is enabled in development mode for the API
 - The Web application uses MVC architecture
 - Docker Compose is used for container orchestration
@@ -98,11 +100,9 @@ The application uses the following Docker configuration:
 ## Troubleshooting
 
 If you encounter any issues:
-
-1. Ensure Docker Desktop is running
-2. Check if ports 80 are available
-3. Verify .NET 8 SDK is installed for local development
-4. Check Docker logs for any container-specific issues
+- Make sure ports 5006 and 5007 are not in use by other applications
+- Check Docker logs for any container-related issues
+- Verify that both containers are running using `docker ps`
 
 ## License
 
