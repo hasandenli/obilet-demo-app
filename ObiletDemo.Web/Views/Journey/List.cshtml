@@ -1,0 +1,75 @@
+@model ObiletDemo.Web.Models.JourneyListViewModel
+
+@{
+    ViewData["Title"] = "Journey List";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="mb-0">Journey List</h3>
+                        <a href="@Url.Action("Index")" class="btn btn-light">
+                            <i class="fas fa-arrow-left"></i> Back to Search
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5>From: @Model.SearchModel.OriginLocation</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>To: @Model.SearchModel.DestinationLocation</h5>
+                        </div>
+                        <div class="col-12">
+                            <h5>Date: @Model.SearchModel.DepartureDate.ToString("dd/MM/yyyy")</h5>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Departure Time</th>
+                                    <th>Arrival Time</th>
+                                    <th>Duration</th>
+                                    <th>Bus Operator</th>
+                                    <th>Bus Type</th>
+                                    <th>Price</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var journey in Model.Journeys)
+                                {
+                                    <tr>
+                                        <td>@journey.DepartureTime</td>
+                                        <td>@journey.ArrivalTime</td>
+                                        <td>@journey.Duration</td>
+                                        <td>@journey.BusOperator</td>
+                                        <td>@journey.BusType</td>
+                                        <td>@journey.Price.ToString("C")</td>
+                                        <td>
+                                            <button class="btn btn-primary btn-sm">
+                                                <i class="fas fa-ticket-alt"></i> Select
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Add any necessary JavaScript here
+    </script>
+} 
