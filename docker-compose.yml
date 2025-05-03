@@ -4,8 +4,7 @@ services:
       context: .
       dockerfile: ObiletDemo.API/Dockerfile
     ports:
-      - "5000:80"
-      - "5001:443"
+      - "5007:5007"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     networks:
@@ -16,8 +15,7 @@ services:
       context: .
       dockerfile: ObiletDemo.Web/Dockerfile
     ports:
-      - "5002:80"
-      - "5003:443"
+      - "5006:5006"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     depends_on:

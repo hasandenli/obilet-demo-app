@@ -1,0 +1,53 @@
+@model ObiletDemo.Web.Models.JourneySearchModel
+
+@{
+    ViewData["Title"] = "Bus Ticket Search";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center mb-0">Bus Ticket Search</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Search" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="OriginLocation" class="form-label">From</label>
+                                <input asp-for="OriginLocation" class="form-control" placeholder="Enter origin location">
+                                <span asp-validation-for="OriginLocation" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="DestinationLocation" class="form-label">To</label>
+                                <input asp-for="DestinationLocation" class="form-control" placeholder="Enter destination location">
+                                <span asp-validation-for="DestinationLocation" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="DepartureDate" class="form-label">Departure Date</label>
+                                <input asp-for="DepartureDate" type="date" class="form-control">
+                                <span asp-validation-for="DepartureDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search"></i> Search Journey
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Set minimum date to today
+        document.getElementById('DepartureDate').min = new Date().toISOString().split('T')[0];
+    </script>
+} 

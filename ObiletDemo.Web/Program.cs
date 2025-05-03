@@ -8,10 +8,10 @@ builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<ISystemService, SystemService>();
 
-// Configure Kestrel to listen on port 80
+// Configure Kestrel to listen on port 5006 for HTTP
 builder.WebHost.UseKestrel(options =>
 {
-    options.ListenAnyIP(80);
+    options.ListenAnyIP(5006); // HTTP
 });
 
 var app = builder.Build();
@@ -24,7 +24,6 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -33,6 +32,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=System}/{action=Info}/{id?}");
+    pattern: "{controller=Journey}/{action=Index}/{id?}");
 
 app.Run();

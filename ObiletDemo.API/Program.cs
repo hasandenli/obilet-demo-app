@@ -11,10 +11,10 @@ builder.Services.AddSwaggerGen();
 // Add SystemService
 builder.Services.AddScoped<ISystemService, SystemService>();
 
-// Configure Kestrel to listen on port 80
+// Configure Kestrel to listen on port 5007
 builder.WebHost.UseKestrel(options =>
 {
-    options.ListenAnyIP(80);
+    options.ListenAnyIP(5007);
 });
 
 var app = builder.Build();
@@ -30,7 +30,6 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
