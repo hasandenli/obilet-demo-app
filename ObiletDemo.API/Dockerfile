@@ -4,8 +4,8 @@ EXPOSE 5007
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["ObiletDemo.API/ObiletDemo.API.csproj", "ObiletDemo.API/"]
-RUN dotnet restore "ObiletDemo.API/ObiletDemo.API.csproj"
+COPY ["ObiletDemo.API.csproj", "."]
+RUN dotnet restore "ObiletDemo.API.csproj"
 COPY . .
 WORKDIR "/src/ObiletDemo.API"
 RUN dotnet build "ObiletDemo.API.csproj" -c Release -o /app/build
