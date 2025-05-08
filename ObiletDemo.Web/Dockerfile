@@ -7,7 +7,6 @@ WORKDIR /src
 COPY ["ObiletDemo.Web.csproj", "."]
 RUN dotnet restore "ObiletDemo.Web.csproj"
 COPY . .
-WORKDIR "/src/ObiletDemo.Web"
 RUN dotnet build "ObiletDemo.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
@@ -16,4 +15,4 @@ RUN dotnet publish "ObiletDemo.Web.csproj" -c Release -o /app/publish /p:UseAppH
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ObiletDemo.Web.dll"] 
+ENTRYPOINT ["dotnet", "ObiletDemo.Web.dll"]
